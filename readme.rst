@@ -38,4 +38,4 @@ the project name meaning
             | 为了对称把gen反写为neg
             | negzhen
             | 但是negzhen不好看，为了对称
-|             neggen
+            | neggen
