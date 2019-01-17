@@ -1,0 +1,88 @@
+.z {
+    position:relative;
+    left:0px;
+    top:0px;
+    width: 375px;
+    height: 750px;
+}
+
+.zetl {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width: 49px;
+    height: 99px;
+    background: #FF7F50;
+}
+
+.zetop {
+    position:absolute;
+    left:49px;
+    top:0px;
+    width: 170px;
+    height: 99px;
+    background: #6495ED;
+}
+
+.zetr {
+    position:absolute;
+    left:219px;
+    top:0px;
+    width: 157px;
+    height: 99px;
+    background: #FFF8DC;
+}
+
+.zel {
+    position:absolute;
+    left:0px;
+    top:99px;
+    width: 49px;
+    height: 400px;
+    background: #DC143C;
+}
+
+.zinner {
+    position:absolute;
+    left:49px;
+    top:99px;
+    width: 170px;
+    height: 400px;
+    background: #00FFFF;
+}
+
+.zer {
+    position:absolute;
+    left:219px;
+    top:99px;
+    width: 157px;
+    height: 400px;
+    background: #00008B;
+}
+
+.zebl {
+    position:absolute;
+    left:0px;
+    top:499px;
+    width: 49px;
+    height: 252px;
+    background: #008B8B;
+}
+
+.zebot {
+    position:absolute;
+    left:49px;
+    top:499px;
+    width: 170px;
+    height: 252px;
+    background: #B8860B;
+}
+
+.zebr {
+    position:absolute;
+    left:219px;
+    top:499px;
+    width: 157px;
+    height: 252px;
+    background: #7FFF00;
+}
