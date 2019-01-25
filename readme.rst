@@ -19,10 +19,6 @@ showTem
          
 .. image:: /docs/images/tmplt/cli.showTem.0.png
 
-    ::
-    
-        ......
-
 .. image:: /docs/images/tmplt/cli.showTem.1.png
 
 
