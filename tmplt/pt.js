@@ -41,9 +41,10 @@ const PT3X3MD = {
 
 //ptindex          1d
 
-function Pt(value,name) {
+function Pt(value,name,color) {
     this.name = name
     this.value = value
+    this.color = color
     this.length = value.length
 }
 
@@ -203,24 +204,28 @@ function rm(lmat,r,c,rowNums,colNums) {
         let tmpr = lhseg[0]
         let tmpc = lhseg[1]
         lmat[tmpr][tmpc].value = " ".repeat(lmat[tmpr][tmpc].value.length)
+	lmat[r][c].color = lmat[tmpr][tmpc].color
     }
     if( tvseg === null) {
     } else {
         let tmpr = tvseg[0]
         let tmpc = tvseg[1]
         lmat[tmpr][tmpc].value = " ".repeat(lmat[tmpr][tmpc].value.length)
+	lmat[r][c].color = lmat[tmpr][tmpc].color
     }
     if( rhseg === null) {
     } else {
         let tmpr = rhseg[0]
         let tmpc = rhseg[1]
         lmat[tmpr][tmpc].value = " ".repeat(lmat[tmpr][tmpc].value.length)
+	lmat[r][c].color = lmat[tmpr][tmpc].color
     }
     if( bvseg === null) {
     } else {
         let tmpr = bvseg[0]
         let tmpc = bvseg[1]
         lmat[tmpr][tmpc].value = " ".repeat(lmat[tmpr][tmpc].value.length)
+	lmat[r][c].color = lmat[tmpr][tmpc].color
     }
     
 }

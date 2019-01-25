@@ -56,6 +56,8 @@ function creatLayout() {
 }
 
 
+
+
 function rmOrphan() {
     let lmat     =  this.mat    
     let rowNums  =  this.rowNums    

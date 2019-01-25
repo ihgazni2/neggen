@@ -1,13 +1,14 @@
-
+const cmmn = require("./cmmn")
 //vsegmat            2d 
 //vsegr              vseg-rownum
 //vsegc              vseg-colnum
 
 //vsegindex          1d
 
-function Vseg(value,name) {
+function Vseg(value,name,color) {
     this.name = name
     this.value = value
+    this.color = color
     this.length = value.length
 }
 
@@ -51,6 +52,21 @@ function bpt(r,c,rowNums) {
     }
 }
 
+function zleft(r,c){
+    if(c-1<0){
+        return(null)
+    } else {
+        return([r,c-1])
+    }
+}
+
+function zright(r,c,colNums) {
+    if(c+1>colNums*2) {
+        return(null)
+    } else {
+        return([r,c+1])
+    }
+}
 
 function isOrphan(lmat,r,c,rowNums,colNums) {
     let tpt = this.tpt(r,c)
@@ -60,20 +76,30 @@ function isOrphan(lmat,r,c,rowNums,colNums) {
     return((tpt.segNums(lmat,r,c,rowNums,colNums)===1)&&(bpt.segNums(lmat,r,c,rowNums,colNums)===1))
 }
 
-
 Vseg.prototype.vsegr = vsegr
 Vseg.prototype.vsegc = vsegc
 Vseg.prototype.index = index
 Vseg.prototype.tpt = tpt
 Vseg.prototype.bpt = bpt
+Vseg.prototype.zleft = zleft
+Vseg.prototype.zright = zright
 Vseg.prototype.isOrphan = isOrphan
 
 function rm(lmat,r,c,rowNums,colNums) {
     let vseg = lmat[r][c]
     vseg.value = " ".repeat(vseg.value.length)
     lmat[r][c] = vseg
-}
+    let zleft =  cmmn.getLmatEleViaLoc(lmat,vseg.zleft(r,c))
+    let zright = cmmn.getLmatEleViaLoc(lmat,vseg.zright(r,c,colNums))
+    if(zleft === null){
 
+    } else if(zright === null) {
+
+    } else {
+        zright.color = zleft.color
+	lmat[r][c].color = zleft.color
+    } 
+}
 
 function index2vsegMatRc(index,colNums) {
     index = index - colNums
@@ -90,8 +116,6 @@ function index2rc(index,rowNums,colNums) {
     let c = tmp[1] * 2
     return([r,c])
 }
-
-
 
 function isVsegLoc(r,c) {
     return((r%2===1)&&(c%2===0))

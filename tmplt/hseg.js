@@ -1,12 +1,15 @@
+const cmmn = require("./cmmn")
+
 //hsegmat            2d 
 //hsegr              hseg-rownum
 //hsegc              hseg-colnum
 
 //hsegindex          1d
 
-function Hseg(value,name) {
+function Hseg(value,name,color) {
     this.name = name
     this.value = value
+    this.color = color
     this.length = value.length
 }
 
@@ -50,6 +53,23 @@ function rpt(r,c,colNums) {
     }
 }
 
+
+function topz(r,c) {
+    if(r-1<0) {
+        return(null)
+    } else {
+	return([r-1,c])
+    }
+}
+
+function botz(r,c,rowNums) {
+    if(r+1>rowNums*2){
+        return(null)
+    } else {
+        return([r+1,c])
+    }
+}
+
 function isOrphan(lmat,r,c,rowNums,colNums) {
     let lpt = this.lpt(r,c)
     lpt = lmat[lpt[0]][lpt[1]]
@@ -63,15 +83,25 @@ Hseg.prototype.hsegc = hsegc
 Hseg.prototype.index = index
 Hseg.prototype.lpt = lpt
 Hseg.prototype.rpt = rpt
+Hseg.prototype.topz = topz
+Hseg.prototype.botz = botz
 Hseg.prototype.isOrphan = isOrphan
 
 function rm(lmat,r,c,rowNums,colNums) {
     let hseg = lmat[r][c]
     hseg.value = " ".repeat(hseg.value.length)
     lmat[r][c] = hseg
+    let topz = cmmn.getLmatEleViaLoc(lmat,hseg.topz(r,c))
+    let botz = cmmn.getLmatEleViaLoc(lmat,hseg.botz(r,c,rowNums))
+    if(topz === null){
+        
+    } else if(botz === null) {
+        
+    } else {
+        botz.color = topz.color
+	lmat[r][c].color = topz.color
+    }
 }
-
-
 
 function index2hsegMatRc(index,colNums) {
     let q = colNums+colNums+1

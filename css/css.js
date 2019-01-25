@@ -2,15 +2,15 @@ const view = require("../zone/view")
 
 
 const DFLT_BGCOLOR =  {
-  zetl:"#FF7F50",
-  zetop:"#6495ED",
-  zetr:"#FFF8DC",
-  zel:"#DC143C",
-  zinner:"#00FFFF",
-  zer:"#00008B",
-  zebl:"#008B8B",
-  zebot:"#B8860B",
-  zebr: "#7FFF00"
+  zetl:"#800000",
+  zetop:"#008000",
+  zetr:"#808000",
+  zel:"#000080",
+  zinner:"#800080",
+  zer:"#008080",
+  zebl:"#C0C0C0",
+  zebot:"#808080",
+  zebr: "#FF0000"
 }
 
 

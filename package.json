@@ -1,6 +1,6 @@
 {
   "name": "neggen",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "generate html grid",
   "main": "neggen.js",
   "scripts": {
