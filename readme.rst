@@ -16,6 +16,14 @@ showTem
     ::
          
          neggen --mode showTem
+         
+.. image:: /docs/images/tmplt/cli.showTem.0.png
+
+    ::
+    
+        ......
+
+.. image:: /docs/images/tmplt/cli.showTem.1.png
 
 
 the project name meaning
