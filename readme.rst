@@ -4,6 +4,20 @@
 In Progressing
 --------------
 
+Usage
+-----
+
+CLI
+===
+
+showTem
+#######
+
+    ::
+         
+         neggen --mode showTem
+
+
 the project name meaning
 -------------------------
 
