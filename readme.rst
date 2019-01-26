@@ -4,11 +4,31 @@
 In Progressing
 --------------
 
+.. contents:: Table of Contents
+   :depth: 2
+
+
+Install
+-------
+- npm install neggen
+-
+
+
+
 Usage
 -----
 
 CLI
 ===
+
+*prepare*
+#########
+
+    ::
+    
+        npm install neggen -g
+
+
 
 srchTem
 #######
@@ -65,7 +85,7 @@ temPage6
 
 temPage7
 ^^^^^^^^
-.. image:: /docs/images/tmplt/showAllTems.8.png
+.. image:: /docs/images/tmplt/showAllTems.7.png
 
 
 temPage8
