@@ -10,6 +10,17 @@ Usage
 CLI
 ===
 
+srchTem
+#######
+
+    ::
+         
+         neggen --mode srchTem --str 4tl3
+         
+.. image:: /docs/images/tmplt/cli.srchTem.0.png
+
+
+
 allTems
 #######
 
@@ -20,17 +31,6 @@ allTems
 .. image:: /docs/images/tmplt/cli.showTem.0.png
 
 .. image:: /docs/images/tmplt/cli.showTem.1.png
-
-
-srchTem
-#######
-
-    ::
-         
-         neggen --mode srchTem --str 4tl3
-         
-.. image:: /docs/images/tmplt/cli.srchTem.0.png
-
 
 
 
