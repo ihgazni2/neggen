@@ -14,10 +14,27 @@ In Progressing
 
 Install
 -------
-- npm install neggen
--
 
+fromRemote
+==========
+    
+    ::
+    
+        npm install neggen
+        //or for using cli
+        npm install neggen -g
 
+fromSource
+==========
+ 
+    ::
+    
+        git clone git@github.com:ihgazni2/neggen.git
+        npm install ./neggen
+        //or for using cli
+        npm install ./neggen -g
+        
+        
 
 Usage
 -----
