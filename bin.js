@@ -2,9 +2,9 @@
 const yargs = require('yargs')
 let opts = yargs.argv
 let mode  = opts.mode
+const neggen = require("./neggen.js")
 
 if(mode === "creat") {
-    const neggen = require("./neggen.js")
     if("name" in opts) {neggen.config.name = opts.name}
     if("height" in opts) {neggen.config.container.height = opts.height}
     if("width" in opts) {neggen.config.container.width = opts.width}
@@ -16,12 +16,10 @@ if(mode === "creat") {
 }
 
 if(mode === "allTems") {
-    const tem3x3 = require("./tmplt/tem3x3.js")
-    tem3x3.lookAll()
+    neggen.showAllTems()
 }
 
 if(mode === "srchTem") {
-    const neggen = require("./neggen.js")
     neggen.srchTem(opts.str)
 }
 

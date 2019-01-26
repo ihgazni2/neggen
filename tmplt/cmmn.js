@@ -106,8 +106,25 @@ function dictMapv(d,map_func,map_func_args) {
 }
 
 
+function dictMirror(d) {
+    let nd = {}
+    for(let k in d) {
+        nd[d[k]] = k
+    }
+    return(nd)
+}
+
+function dictUpdate(d1, d2) {
+  for (let k in d2) {
+    d1[k] = d2[k]
+  }
+  return (d1)
+}
+
 module.exports = {
     getLmatEleViaLoc:getLmatEleViaLoc,
     combination:combination,
     dictMapv:dictMapv,
+    dictMirror:dictMirror,
+    dictUpdate:dictUpdate,
 }

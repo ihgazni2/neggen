@@ -284,6 +284,23 @@ function saveAll3X3Layouts() {
 }
 
 
+//
+function layoutNameD2NumD(d) {
+    let nd = {}
+    for(let k in d) {
+        let v = d[k]
+        v = v.map((ele)=>(clsz.Z3X3MD[ele]))
+        nd[k] = v
+    }
+    return(nd)
+}
+
+function layoutNumD2NameD(d) {
+    return(layoutNameD2NumD(d))
+}
+//
+
+
 module.exports = {
     getAll3X3Layouts:getAll3X3LayoutDetails,
     rmDuplicated:rmDuplicated,

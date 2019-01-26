@@ -152,6 +152,40 @@ function index2lmatIndex(index,rowNums,colNums) {
     return(lindex)
 }
 
+//zindex
+
+function getCorners(index,rowNums,colNums) {
+    let tmp = index2rc(index,rowNums,colNums)
+    let r = tmp[0]
+    let c = tmp[1]
+    return({
+        tl:[(r-1),(c-1)],
+	tr:[(r-1),(c+1)],
+	bl:[(r+1),(c-1)],
+	br:[(r+1),(c+1)]
+    })
+}
+
+
+function getZrelation(zi1,zi2,rowNums,colNums) {
+    let cnrs1 = getCorners(zi1,rowNums,colNums)
+    let cnrs2 = getCorners(zi2,rowNums,colNums)
+    if(JSON.stringify(cnrs1.br)===JSON.stringify(cnrs2.tl)) {return("tl")}
+    else if(JSON.stringify(cnrs1.bl)===JSON.stringify(cnrs2.tl)) {return("t")}
+    else if(JSON.stringify(cnrs1.bl)===JSON.stringify(cnrs2.tr)) {return("tr")}
+    else if(JSON.stringify(cnrs1.br)===JSON.stringify(cnrs2.bl)) {return("l")}
+    else if(JSON.stringify(cnrs1.br)===JSON.stringify(cnrs2.br)) {return("i")}
+    else if(JSON.stringify(cnrs1.bl)===JSON.stringify(cnrs2.br)) {return("r")}
+    else if(JSON.stringify(cnrs1.tr)===JSON.stringify(cnrs2.bl)) {return("bl")}
+    else if(JSON.stringify(cnrs1.tl)===JSON.stringify(cnrs2.bl)) {return("b")}
+    else if(JSON.stringify(cnrs1.tl)===JSON.stringify(cnrs2.br)) {return("br")}
+    else {return("apart")}
+}
+
+
+//
+
+
 module.exports = {
     Z:Z,
     index2ZmatRc:index2ZmatRc,
@@ -164,7 +198,9 @@ module.exports = {
     getZ3X3BGviaName:getZ3X3BGviaName,
     getZ3X3BGviaNum:getZ3X3BGviaNum,
     Z3X3TEM_NAME_MD:Z3X3TEM_NAME_MD,
-    Z3X3BGNUM_MD:Z3X3BGNUM_MD
+    Z3X3BGNUM_MD:Z3X3BGNUM_MD,
+    getCorners:getCorners,
+    getZrelation:getZrelation,
 }
 
 
