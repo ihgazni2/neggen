@@ -28,9 +28,49 @@ allTems
          
          neggen --mode allTems
          
-.. image:: /docs/images/tmplt/cli.showTem.0.png
+temPage0
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.0.png
 
-.. image:: /docs/images/tmplt/cli.showTem.1.png
+
+temPage1
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.1.png
+
+
+temPage2
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.2.png
+
+
+temPage3
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.3.png
+
+
+temPage4
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.4.png
+
+
+temPage5
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.5.png
+
+
+temPage6
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.6.png
+
+
+temPage7
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.8.png
+
+
+temPage8
+^^^^^^^^
+.. image:: /docs/images/tmplt/showAllTems.8.png
 
 
 
