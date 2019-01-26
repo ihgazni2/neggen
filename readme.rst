@@ -1,11 +1,15 @@
+.. contents:: Table of Contents
+   :depth: 3
+
+
+
 *neggen*
 --------
 
 In Progressing
 --------------
 
-.. contents:: Table of Contents
-   :depth: 2
+
 
 
 Install
