@@ -39,6 +39,7 @@ fromSource
 Usage
 -----
 
+
 CLI
 ===
 
@@ -121,6 +122,40 @@ temPage7
 temPage8
 ^^^^^^^^
 .. image:: /docs/images/tmplt/showAllTems.8.png
+
+creat
+#####
+
+*params* meaning 
+^^^^^^^^^^^^^^^^
+
+    ::
+        
+         # file name 
+         --name
+         # for parent view (container)
+         --top      
+         --left
+         --height
+         --width
+         # see the picture below
+         --itop
+         --ileft
+         --iheight
+         --iwidth
+         # the layout-template name
+         --template
+         
+.. image:: /docs/images/tmplt/config.spt.0.png
+.. image:: /docs/images/tmplt/config.spt.1.png
+
+
+cmdline
+^^^^^^^
+
+    ::
+    
+        
 
 
 Template naming  rules
