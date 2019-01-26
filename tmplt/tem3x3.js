@@ -3,8 +3,24 @@ const clsdesc = require("../desc/desc.js")
 const clscmmn = require("./cmmn")
 const process = require("process")
 const elel = require("elist")
+const path = require("path")
 
-const TEM3X3LAYOUTS = JSON.parse(fs.readFileSync("./tem3x3.json"))
+function getTemJsonDir() {
+    let dir = path.dirname(require.resolve('neggen'))
+    return(path.join(dir,"tmplt","tem3x3.json"))
+}
+
+//
+let TEM3X3LAYOUTS
+
+try {
+    TEM3X3LAYOUTS = JSON.parse(fs.readFileSync(getTemJsonDir()))
+} catch (err) {
+    TEM3X3LAYOUTS = JSON.parse(fs.readFileSync("./tem3x3.json"))
+} finally {
+
+}
+//
 
 function showSegNum() {
     clsdesc.segNum()

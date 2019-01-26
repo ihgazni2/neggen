@@ -90,7 +90,24 @@ function * combination(arr) {
     }
 }
 
+//
+function dictMapv(d,map_func,map_func_args) {
+    if(map_func_args === undefined) {
+        map_func_args = []
+    } else {
+	
+    }
+    let nd = {}
+    for(let k in d) {
+        let v = map_func(d[k],...map_func_args)
+	nd[k] = v
+    }
+    return(nd)
+}
+
+
 module.exports = {
     getLmatEleViaLoc:getLmatEleViaLoc,
-    combination:combination
+    combination:combination,
+    dictMapv:dictMapv,
 }

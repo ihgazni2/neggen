@@ -33,6 +33,27 @@ const Z3X3BG = {
 }
 
 
+const Z3X3BGNUM_MD =  {
+  1:"#800000",
+  2:"#008000",
+  3:"#808000",
+  4:"#000080",
+  5:"#800080",
+  6:"#008080",
+  7:"#C0C0C0",
+  8:"#808080",
+  9: "#FF0000",
+  "#800000":1,
+  "#008000":2,
+  "#808000":3,
+  "#000080":4,
+  "#800080":5,
+  "#008080":6,
+  "#C0C0C0":7,
+  "#808080":8,
+  "#FF0000":9,
+}
+
 const Z3X3TEM_NAME_MD = {
     tl    : 0,
     l     : 3,
@@ -142,7 +163,8 @@ module.exports = {
     Z3X3BG:Z3X3BG,
     getZ3X3BGviaName:getZ3X3BGviaName,
     getZ3X3BGviaNum:getZ3X3BGviaNum,
-    Z3X3TEM_NAME_MD:Z3X3TEM_NAME_MD
+    Z3X3TEM_NAME_MD:Z3X3TEM_NAME_MD,
+    Z3X3BGNUM_MD:Z3X3BGNUM_MD
 }
 
 

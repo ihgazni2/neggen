@@ -2,6 +2,7 @@ const fs = require("fs")
 const path = require('path')
 const css = require("./css/css")
 const html = require("./html/html")
+const gaia = require("./tmplt/gaia")
 
 let config = {
     name:"@",
@@ -76,7 +77,21 @@ function creat() {
     html.html(config)
 }
 
+
+let LAYOUT_TEMS = gaia.getAll3X3Layouts()
+
+function printTem(n) {
+    gaia.printLayout(LAYOUT_TEMS,n)
+}
+
+function srchTem(n) {
+    gaia.srchLayout(LAYOUT_TEMS,n)
+}
+
+
 module.exports = {
     config:config,
-    creat:creat
+    creat:creat,
+    printTem:printTem,
+    srchTem:srchTem,
 }

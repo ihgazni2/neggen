@@ -4,6 +4,7 @@ const clsdesc = require("../desc/desc.js")
 const clscmmn = require("./cmmn")
 const clspt = require("./pt")
 const clsz = require("./z")
+const cmmn = require("./cmmn")
 const SEG3X3NUM = [4,5,7,8,9,11,12,14,15,16,18,19]
 const IPT3X3RC = [[ 2, 2 ],[ 2, 4 ],[ 4, 2 ],[4 ,4 ]]
 
@@ -62,7 +63,7 @@ function getZtemName(lmat) {
     for(let i=0;i<arr.length;i++){
         name = name + arr[i].lngth + arr[i].zn
     }
-    return(name)
+    return({name:name,arr:arr,d:d})
 }
 
 
@@ -105,7 +106,10 @@ function getOneLayout(combo) {
     lmat.initLayOutMat()
     setZ3X3BG(lmat)
     lmat.rm({segs:combo})
-    let zn = getZtemName(lmat)
+    let tmp = getZtemName(lmat)
+    let zn = tmp.name
+    let carr = tmp.arr
+    let cd = tmp.d
     if(haveLonelyCornerIpt(lmat)) {
         return(null)
     } else {
@@ -117,7 +121,9 @@ function getOneLayout(combo) {
         d[n] = { 
 	    rmnl:[getTemFileName(combo)],
 	    zn:zn,
-	    printn:printn
+	    printn:printn,
+	    arr:carr,
+	    d:cd,
 	}
         return(d)
     }
@@ -155,34 +161,136 @@ function rmDuplicated(layouts) {
 }
 
 
-function printLayout(layout) {
-    let k = Object.keys(layout)[0]
-    let v = layout[k]    
-    console.log(k)
-    console.log(v)
-}
 
-function printLayoutViaNum(nlayouts,num) {
+function printBriefLayoutViaNum(nlayouts,num) {
     let layouts = Object.keys(nlayouts)
     console.log(layouts[num]) 
 }
 
 
+function getLayoutViaNum(nlayouts,num) {
+    let keys = Object.keys(nlayouts)
+    let k = keys[num]
+    return(nlayouts[k])
+}
 
+function printLayoutViaNum(nlayouts,num) {
+    let layout = getLayoutViaNum(nlayouts,num)
+    console.log("names:   ")
+    console.log(Array.prototype.concat(layout.zn,layout.rmnl))
+    console.log("layout:    ")
+    console.log(layout.printn)
+}
+
+function getLayoutNameList(layout) {
+    return(Array.prototype.concat(layout.zn,layout.rmnl))
+}
+
+function getLayoutViaName(nlayouts,name) {
+    let keys = Object.keys(nlayouts)
+    for(let k of keys) {
+        let layout = nlayouts[k]
+	let nl = getLayoutNameList(layout)
+	let cond = nl.includes(name)
+	if(cond) {
+	    return(layout)    
+	} else {
+	   
+	}
+    }
+    return(null)
+}
+
+function printLayoutViaName(nlayouts,name) {
+    let layout = getLayoutViaName(nlayouts,name)
+    console.log("names:   ")
+    console.log(Array.prototype.concat(layout.zn,layout.rmnl))
+    console.log("layout:    ")
+    console.log(layout.printn)
+}
+
+function printLayout(layouts,n) {
+    if(typeof(n) === "string") {printLayoutViaName(layouts,n)}
+    if(typeof(n) === "number") {printLayoutViaNum(layouts,n)}
+}
+
+function getLayout(layouts,n) {
+    if(typeof(n) === "string") {return(getLayoutViaName(layouts,n))}
+    if(typeof(n) === "number") {return(getLayoutViaNum(layouts,n))}
+}
+//
+
+function srchLayoutNames(layouts,name) {
+    let names = []
+    let keys = Object.keys(layouts)
+    for(let k of keys) {
+        let layout = layouts[k]
+        let nl = getLayoutNameList(layout)
+	nl = nl.filter((ele)=>(ele.includes(name)))
+	if(nl.length >0) {
+	    names.push(nl[0])
+	} else {
+	}
+    }
+    return(names)
+}
+
+function srchLayout(layouts,n,rtrn) {
+    if(rtrn === undefined) {rtrn = false}
+    let rslt = []
+    let names = srchLayoutNames(layouts,n)
+    for(let nm of names) {
+        printLayout(layouts,nm)
+	rslt.push(getLayout(layouts,nm))
+    }
+    if(rtrn) {
+        return(rslt)
+    } else {
+    }
+}
+
+
+//
+function prepareLayoutForCSS(layout) {
+    let arr = layout.arr
+    arr = arr.map((ele)=>{ele.color = clsz.Z3X3BGNUM_MD[ele.color];return(ele)})
+    arr = arr.map((ele)=>{ele.zn = clsz.Z3X3MD[clsz.Z3X3TEM_NAME_MD[ele.zn]];return(ele)})
+    let d = layout.d
+    let nd = {}
+    for(let k in d) {
+        let v = d[k]
+        v = v.map((ele)=>(clsz.Z3X3MD[ele]))
+        k = clsz.Z3X3BGNUM_MD[k]
+        nd[k] = v
+    }
+    layout.arr = arr
+    layout.d = nd
+    return(layout)
+}
+
+//
+function getAll3X3LayoutDetails() {
+    let layouts = getAll3X3Layouts()
+    let nlayouts = rmDuplicated(layouts)
+    nlayouts = cmmn.dictMapv(nlayouts,prepareLayoutForCSS)
+    return(nlayouts)
+}
 
 //console.log(Object.keys(nlayouts)[3])
 function saveAll3X3Layouts() {
-    let layouts = getAll3X3Layouts()
-    let nlayouts = rmDuplicated(layouts)
+    let nlayouts = getAll3X3LayoutDetails()
     let s = JSON.stringify(nlayouts)
     fs.writeFileSync("tem3x3.json",s)
 }
 
 
 module.exports = {
-    getAll3X3Layouts:getAll3X3Layouts,
+    getAll3X3Layouts:getAll3X3LayoutDetails,
     rmDuplicated:rmDuplicated,
     saveAll3X3Layouts:saveAll3X3Layouts,
-    printLayoutViaNum:printLayoutViaNum,
-    setZ3X3BG:setZ3X3BG
+    printLayout:printLayout,
+    getLayout:getLayout,
+    srchLayout:srchLayout,
+    setZ3X3BG:setZ3X3BG,
+    prepareLayoutForCSS:prepareLayoutForCSS
 }
