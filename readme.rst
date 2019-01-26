@@ -10,16 +10,29 @@ Usage
 CLI
 ===
 
-showTem
+allTems
 #######
 
     ::
          
-         neggen --mode showTem
+         neggen --mode allTems
          
 .. image:: /docs/images/tmplt/cli.showTem.0.png
 
 .. image:: /docs/images/tmplt/cli.showTem.1.png
+
+
+srchTem
+#######
+
+    ::
+         
+         neggen --mode srchTem --str 4tl3
+         
+.. image:: /docs/images/tmplt/cli.srchTem.0.png
+
+
+
 
 
 the project name meaning
