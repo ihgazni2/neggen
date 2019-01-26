@@ -123,6 +123,19 @@ temPage8
 .. image:: /docs/images/tmplt/showAllTems.8.png
 
 
+Template naming  rules
+-----------------------
+
+    ::
+    
+        two rule-sets ,either is OK.
+        
+1. using brief zone name
+========================
+
+
+2. using removed segment numbers
+================================
 
 
 the project name meaning
