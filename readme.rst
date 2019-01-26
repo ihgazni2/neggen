@@ -61,6 +61,15 @@ srchTem
 .. image:: /docs/images/tmplt/cli.srchTem.0.png
 
 
+printTem
+########
+
+    ::
+         
+         neggen --mode printTem --str 4tl3tr2bl
+         
+.. image:: /docs/images/tmplt/cli.printTem.0.png
+
 
 allTems
 #######
