@@ -440,7 +440,16 @@ Zone,Point,Segment
               ---21------22------23---     
         
 
-       
+Restrict
+--------
+
+    ::
+        # the below cant work in windows, coz based on ansi256
+        srchTem
+        printTem
+        showAllTem
+        allTems
+        
         
 
 the project name meaning
