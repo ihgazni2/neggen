@@ -153,6 +153,8 @@ creat
 cmdline
 ^^^^^^^
 
+html+css
+~~~~~~~~
 
     ::
     
@@ -173,6 +175,38 @@ cmdline
 .. image:: /docs/images/tmplt/cli.creat.tem.3.png
 
 
+styleInline
+~~~~~~~~~~~
+
+    ::
+    
+        rm -r 4tl3tr2bl
+        neggen --mode creat --tem 4tl3tr2bl --styleInline true
+        ls -l 4tl3tr2bl
+        
+.. image:: /docs/images/tmplt/cli.creat.tem.inline.0.png       
+.. image:: /docs/images/tmplt/cli.creat.tem.inline.1.png
+
+-web
+
+    ::
+    
+        #open the 4tl3tr2bl.html with firefox
+
+.. image:: /docs/images/tmplt/cli.creat.tem.inline.2.png       
+
+
+
+with params
+~~~~~~~~~~~
+
+    ::
+    
+        neggen --mode creat --tem 4tl3tr2bl --height 500 --width 500 --iheight 1/5 --iwidth 1/5 --itop 2/5 --ileft 2/5
+        ls -l 4tl3tr2bl
+        #open the 4tl3tr2bl.html with firefox
+        
+.. image:: /docs/images/tmplt/cli.creat.tem.params.0.png 
 
 
 Template naming  rules
