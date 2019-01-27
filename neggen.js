@@ -23,6 +23,7 @@ let config = {
         left:0,
         height:750,
         width:375,
+	attribs:{}
     },
 
 }
@@ -31,7 +32,7 @@ let config = {
 function creat() {
     if(config.styleInline) {
         let styles = css.css(config)
-        for(var k in styles) {
+        for(let k in styles) {
             config[k].attribs.style = styles[k]
         }
     } else {

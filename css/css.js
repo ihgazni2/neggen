@@ -13,7 +13,7 @@ const Z3X3NAMES =  [
 
 
 const CSS_TEMS = {
-    "z":`.z {
+    "container":`.container {
     position:relative;
     left:@left@px;
     top:@top@px;
@@ -32,7 +32,7 @@ const CSS_TEMS = {
 
 
 function creatZcss(config) {
-    let css = CSS_TEMS.z
+    let css = CSS_TEMS.container
     css = css.replace("@left@",config.container.left)
     css = css.replace("@top@",config.container.top)
     css = css.replace("@width@",config.container.width)
@@ -76,7 +76,7 @@ function creatCssPlan(config) {
     let arr = []
     let styles = {}
     if(config.styleInline){
-        styles.z = css2inlineStyle(creatZcss(config))
+        styles.container = css2inlineStyle(creatZcss(config))
     } else {
         arr.push(creatZcss(config))
     }

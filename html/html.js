@@ -7,9 +7,9 @@ const HTML_STYLE_OUT_TEM = `<html>
     <link type="text/css" rel="styleSheet"  href="./#name#.css" />
 </head>
 <body>
-    <@z@ class="z">
+    <@container@ class="container">
 @entries@
-    </@z@>
+    </@container@>
 </body>
 </html>`
 
@@ -18,9 +18,9 @@ const HTML_STYLE_INLINE_TEM = `<html>
 <head>
 </head>
 <body>
-    <@z@ class="z" style="@zstyle@">
+    <@container@ class="container" style="@containerStyle@">
 @entries@
-    </@z@>
+    </@container@>
 </body>
 </html>`
 
@@ -94,13 +94,13 @@ function creatHtml(config) {
     let html = ""
     if(config.styleInline){
         html = HTML_STYLE_INLINE_TEM.replace("@entries@",creatEntries(config))
-	let zstyle = creatAttribStr(config.z.attribs)
-	html = html.replace("@zstyle@",zstyle)
+	let zstyle = creatAttribStr(config.container.attribs)
+	html = html.replace("@containerStyle@",zstyle)
     } else {
         html = HTML_STYLE_OUT_TEM.replace("@entries@",creatEntries(config))
     }
     html = html.replace("#name#",config.name)
-    html = html.replace(/@z@/g,config.container.tag)
+    html = html.replace(/@container@/g,config.container.tag)
     if(fs.existsSync(config.name)){
     } else {
 	fs.mkdirSync(path.join(".",config.name))
