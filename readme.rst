@@ -6,8 +6,8 @@
 *neggen*
 --------
 
-In Progressing
---------------
+Introduce
+---------
 
 
 
@@ -207,6 +207,23 @@ with params
         #open the 4tl3tr2bl.html with firefox
         
 .. image:: /docs/images/tmplt/cli.creat.tem.params.0.png 
+
+
+package
+=======
+
+    ::
+    
+        var neggen = require("./neggen")
+        neggen.getAllTemNames()
+        neggen.showAllTems()
+        neggen.srchTem("4tl3")
+        neggen.printTem("4tl3tr2bl")
+        neggen.config.template = "4tl3tr2bl"
+        neggen.config
+        neggen.getTemCfg()
+        neggen.creat()        
+
 
 
 Template naming  rules
