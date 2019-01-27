@@ -18,7 +18,7 @@ const HTML_STYLE_INLINE_TEM = `<html>
 <head>
 </head>
 <body>
-    <@container@ class="container" style="@containerStyle@">
+    <@container@ class="container" @containerStyle@>
 @entries@
     </@container@>
 </body>
