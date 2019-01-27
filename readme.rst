@@ -1,5 +1,5 @@
 .. contents:: Table of Contents
-   :depth: 3
+   :depth: 4
 
 
 
@@ -39,6 +39,7 @@ fromSource
 Usage
 -----
 
+
 CLI
 ===
 
@@ -60,6 +61,15 @@ srchTem
          
 .. image:: /docs/images/tmplt/cli.srchTem.0.png
 
+
+printTem
+########
+
+    ::
+         
+         neggen --mode printTem --str 4tl3tr2bl
+         
+.. image:: /docs/images/tmplt/cli.printTem.0.png
 
 
 allTems
@@ -113,8 +123,219 @@ temPage8
 ^^^^^^^^
 .. image:: /docs/images/tmplt/showAllTems.8.png
 
+creat
+#####
+
+*params* meaning 
+^^^^^^^^^^^^^^^^
+
+    ::
+        
+         # file name 
+         --name
+         # for parent view (container)
+         --top      
+         --left
+         --height
+         --width
+         # see the picture below
+         --itop
+         --ileft
+         --iheight
+         --iwidth
+         # the layout-template name
+         --template
+         
+.. image:: /docs/images/tmplt/config.spt.0.png
+.. image:: /docs/images/tmplt/config.spt.1.png
 
 
+cmdline
+^^^^^^^
+
+    ::
+    
+        
+
+
+Template naming  rules
+-----------------------
+
+    ::
+    
+        two rule-sets ,either is OK.
+       
+*example*       
+=========
+
+    ::
+    
+        template names: [ '4tl3tr2bl', 'rm4@7@8@9@11@16@18' ]
+        layout as below:
+
+.. image:: /docs/images/tmplt/cli.printTem.0.png
+
+1. using brief zone name
+========================
+
+    ::
+        
+        how to get '4tl3tr2bl'
+        
+        A. the brief-zone-names:
+            ---------------------------------------------
+            |  tl           |    t      |     tr        |
+            ---------------------------------------------
+            |               |           |               |
+            |   l           |    i      |      r        |
+            |               |           |               |
+            ---------------------------------------------
+            |   bl          |    b      |     br        |
+            ---------------------------------------------
+        
+        B. the zone-numbers:
+            ---------------------------------------------
+            |     0         |    1      |     2         |
+            ---------------------------------------------
+            |               |           |               |
+            |     3         |    4      |      5        |
+            |               |           |               |
+            ---------------------------------------------
+            |     6         |    7      |     8         |
+            ---------------------------------------------
+        
+        C.  so the brief-zone-names in zone-number-sequence is:
+            [tl,t,tr,l,i,r,bl,b,br]
+        
+        D. the colors and zones(in zone-number-sequence) relationship:
+            red:[tl,t,l,i]   ------------ 4 zones,the first is tl --- 4tl
+            yellow:[tr,r,br] ------------ 3 zones,the first is tr --- 3tr
+            white:[bl,b]     ------------ 2 zones,the first is bl --- 2bl
+            
+            so we get 4tl3tr2bl
+            
+                      
+2. using removed segment numbers
+================================
+
+    ::
+    
+        how to get 'rm4@7@8@9@11@16@18'
+        
+        A. the segment-numbers:
+            ----0-------1-------2---
+            |       |       |      |
+            3       4       5      6
+            |       |       |      |
+            ----7-------8-------9---
+            |       |       |      |
+            10     11      12     13
+            |       |       |      |
+            ---14------15------16---
+            |       |       |      |
+            17     18      19     20
+            |       |       |      |
+            ---21------22------23---
+        
+        B. after removing 4,7,8,9,11,16,18:
+            ----0-------1-------2---
+            |               |      |
+            3               5      6
+            |               |      |
+            -               -      -
+            |               |      |
+            10             12     13
+            |               |      |
+            ---14------15----      -
+            |               |      |
+            17             19     20
+            |               |      |
+            ---21------22------23---       
+        
+            so we get rm4@7@8@9@11@16@18
+        
+        
+Zone,Point,Segment
+------------------
+
+    ::
+            
+        A. zone-numbers
+            ---------------------------------------------
+            |     0         |    1      |     2         |
+            ---------------------------------------------
+            |               |           |               |
+            |     3         |    4      |      5        |
+            |               |           |               |
+            ---------------------------------------------
+            |     6         |    7      |     8         |
+            ---------------------------------------------
+            
+        B. zone-names
+            ---------------------------------------------
+            |     zetl      |   zetop   |     zetr      |
+            |-------------------------------------------|
+            |               |           |               |
+            |     zel       |   zinner  |     zer       |
+            |               |           |               |
+            |-------------------------------------------|
+            |     zebl      |   zebot   |    zebr       |
+            ---------------------------------------------
+         
+        C.  brief-zone-names       
+            ---------------------------------------------
+            |  tl           |    t      |     tr        |
+            ---------------------------------------------
+            |               |           |               |
+            |   l           |    i      |      r        |
+            |               |           |               |
+            ---------------------------------------------
+            |   bl          |    b      |     br        |
+            ---------------------------------------------        
+        
+        D.  point-numbers
+            0-------1-------2------3
+            |       |       |      |
+            4-------5-------6------7
+            |       |       |      |
+            8-------9-------10-----11
+            |       |       |      |
+            12-----13-------14-----15  
+            
+        E.  point-names
+            etlspt----------etseglspt---etsegrspt-------etrspt
+               |     zetl      |   zetop   |     zetr      |
+            elsegtspt---------itlspt-------itrspt---------ersegtspt
+               |               |           |               |
+               |     zel       |   zinner  |     zer       |
+               |               |           |               |
+            elsegbspt--------iblspt-------ibrspt----------ersegbspt
+               |     zebl      |   zebot   |    zebr       |
+            eblspt---------ebseglspt---ebsegrspt----------ebrspt
+         
+            #itlspt       inner-top-left-split-point
+            #itrspt       inner-top-right-split-point
+            #iblspt       inner-bottom-left-split-point
+            #ibrspt       inner-bottom-right-split-point
+            
+          F. the segment-numbers:
+              ----0-------1-------2---
+              |       |       |      |
+              3       4       5      6
+              |       |       |      |
+              ----7-------8-------9---
+              |       |       |      |
+              10     11      12     13
+              |       |       |      |
+              ---14------15------16---
+              |       |       |      |
+              17     18      19     20
+              |       |       |      |
+              ---21------22------23---     
+        
+
+       
+        
 
 the project name meaning
 -------------------------
@@ -150,164 +371,7 @@ the project name meaning
             | 为了对称把gen反写为neg
             | negzhen
             | 但是negzhen不好看，为了对称
-            | neggen
+            | neggen         
+        
 
-Variable Name
---------------
-
-    ::
-    
-        #tl top-left            (r,c)
-        #tr top-right           (r,c)
-        #bl bottom-left         (r,c)
-        #br bottom-right        (r,c)
-        
-        ---------------------------------------------
-        | edge-top-left | edge-top  | edge-top-right|
-        ---------------------------------------------
-        |               |           |               |
-        |   edge-left   |   INNER   |   edge-right  |
-        |               |           |               |
-        ---------------------------------------------
-        | edge-bot-left | edge-bot  | edge-bot-right|
-        ---------------------------------------------
-        
-        #zetl         zone-edge-top-left
-        #zetr         zone-edge-top-right
-        #zebl         zone-edge-bottom-left
-        #zebr         zone-edge-bottom-right
-        #zetop        zone-edge-top
-        #zel          zone-edge-left
-        #zer          zone-edge-right
-        #zebot        zone-edge-bottom
-        #zinner       zone-inner
-        
-        ---------------------------------------------
-        |     0         |    1      |     2         |
-        ---------------------------------------------
-        |               |           |               |
-        |     3         |    4      |      5        |
-        |               |           |               |
-        ---------------------------------------------
-        |     6         |    7      |     8         |
-        ---------------------------------------------
-        
-        
-        #zetl         0
-        #zel          3
-        #zebl         6
-        #zebot        7
-        #zebr         8
-        #zer          5
-        #zetr         2
-        #zetop        1
-        #zinner       4
-        
-        
-         etlspt---------------------------------------etrspt
-            |     zetl      |   zetop   |     zetr      |
-            |------------itlspt-------itrspt------------|
-            |               |           |               |
-            |     zel       |   zinner  |     zer       |
-            |               |           |               |
-            |------------iblspt-------ibrspt------------|
-            |     zebl      |   zebot   |    zebr       |
-         eblspt----------------------------------------ebrspt
-        
-        #z            zone
-        #i            inner
-        #e            edge
-        
-        
-        #pt           ponit
-        #spt          split-point
-        #itlspt       inner-top-left-split-point
-        #itrspt       inner-top-right-split-point
-        #iblspt       inner-bottom-left-split-point
-        #ibrspt       inner-bottom-right-split-point
-        
-        
-        #seg          segment
-        
-        zone = {
-            tlspt:[r,c],
-            trspt:[r,c],
-            blspt:[r,c],
-            brspt:[r,c],
-            tseg:[tlspt,trspt],
-            lseg:[tlspt,blspt],
-            bseg:[blspt,brspt],
-            rseg:[trspt,brspt]
-        }
-        
-        tlspt------tseg-------trspt
-          |                     |
-         lseg      Zone       rseg
-          |                     |
-        blspt-----bseg---------brspt
-        
-        
-        
-        #pos            postion
-        
-        {
-            left:c,
-            top:r,
-            right:c,
-            bottom:r
-        }
-        
-        #
-         etlspt----------etseglspt---etsegrspt-------etrspt
-            |     zetl      |   zetop   |     zetr      |
-         elsegtspt---------itlspt-------itrspt---------ersegtspt
-            |               |           |               |
-            |     zel       |   zinner  |     zer       |
-            |               |           |               |
-         elsegbspt--------iblspt-------ibrspt----------ersegbspt
-            |     zebl      |   zebot   |    zebr       |
-         eblspt---------ebseglspt---ebsegrspt----------ebrspt
-         
-        
-        
-        #vw              view
-        #pvw             parent-view
-        
-        #segs
-        
-        ----0-------1-------2---
-        |       |       |      |
-        3       4       5      6
-        |       |       |      |
-        ----7-------8-------9---
-        |       |       |      |
-        10     11      12     13
-        |       |       |      |
-        ---14------15------16---
-        |       |       |      |
-        17     18      19     20
-        |       |       |      |
-        ---21------22------23---
-        
-        
-        #ptnum
-        
-        0-------1-------2------3
-        |       |       |      |
-        4-------5-------6------7
-        |       |       |      |
-        8-------9-------10-----11
-        |       |       |      |
-        12-----13-------14-----15
-        
-        
-        #znum
-        ---------------------------------------------
-        |     0         |    1      |     2         |
-        ---------------------------------------------
-        |               |           |               |
-        |     3         |    4      |      5        |
-        |               |           |               |
-        ---------------------------------------------
-        |     6         |    7      |     8         |
-        ---------------------------------------------    
+ 
