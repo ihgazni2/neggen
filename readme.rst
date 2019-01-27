@@ -223,7 +223,7 @@ styleInline
         ls -l 4tl3tr2bl
         
 .. image:: /docs/images/tmplt/cli.creat.tem.inline.0.png       
-.. image:: /docs/images/tmplt/cli.creat.tem.inline.1.png
+.. image:: /docs/images/tmplt/cli.creat.tem.inline.11.png
 
 -web
 
