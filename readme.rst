@@ -164,7 +164,13 @@ cmdline
 .. image:: /docs/images/tmplt/cli.creat.tem.2.png
 
 
-   
+-web
+
+    ::
+        
+        #open the 4tl3tr2bl.html with firefox
+
+.. image:: /docs/images/tmplt/cli.creat.tem.3.png
 
 
 
