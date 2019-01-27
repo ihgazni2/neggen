@@ -209,7 +209,7 @@ with params
 .. image:: /docs/images/tmplt/cli.creat.tem.params.0.png 
 
 
-package
+PKG
 =======
 
     ::
