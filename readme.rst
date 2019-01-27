@@ -8,8 +8,45 @@
 
 Introduce
 ---------
+ 
+- 1. install with -g to use cli
 
+    ::
+    
+        npm install neggen -g
 
+- 2. show all templates
+
+    ::
+    
+        neggen --mode allTems
+
+- 3. refer to `Template naming rules`_ for template-name-rules
+
+    ::
+        check it
+
+- 4. srch a template
+
+    ::
+    
+        neggen --mode srchTem --str 4tl3
+
+- 5. show template layout
+
+    ::
+    
+        neggen --mode printTem --str 4tl3tr2bl
+ 
+- 6. generate html and css files
+
+    ::
+    
+        neggen --mode creat --tem 4tl3tr2bl --height 500 --width 500 --iheight 1/5 --iwidth 1/5 --itop 2/5 --ileft 2/5
+        
+- 7. open html with firefox        
+        
+        
 
 
 Install
