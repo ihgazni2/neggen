@@ -1,3 +1,5 @@
+const elel = require("elist")
+
 function getLmatEleViaLoc(lmat,loc) {
     if(loc === null) {
         return(null)
@@ -7,6 +9,7 @@ function getLmatEleViaLoc(lmat,loc) {
 }
 
 
+// general but slow
 // [],[0,1,2,3]
 
 // [0],--[1,2,3]
@@ -28,6 +31,7 @@ function getLmatEleViaLoc(lmat,loc) {
 // unhandled = [
     // {h:[],t:[0,1,2,3]}
 // ]
+
 
 function initUnhandled(arr) {
     arr = arr.sort(function(a, b){
@@ -89,6 +93,51 @@ function * combination(arr) {
         unhandled = getChildren(unhandled,arr)
     }
 }
+
+//fast method, use this later
+
+function toBitList(n,lngth) {
+    let s = n.toString(2)
+    s = "0".repeat(lngth-s.length) + s
+    return(s.split("").map((ele)=>(parseInt(ele))))
+}
+
+
+function * combination2(arr) {
+    for(let n=0;n<2**arr.length;n++){
+        let bl = toBitList(n,arr.length)
+        let combo = elel.slctvI(arr,(i,bl)=>(bl[i]===1),[bl])
+        yield(combo)
+    }
+}
+//
+
+
+//https://en.wikipedia.org/wiki/Steinhaus%E2%80%93Johnson%E2%80%93Trotter_algorithm
+//https://stackoverflow.com/questions/34013675/permutations-without-recursive-function-call
+//(firstElIndex * 3!) + (secondElIndex * 2!) + (thirdElIndex * 1!) + (fourthElIndex * 0!)
+
+function * permutation(arr) {
+  if (arr.length < 2) {
+    return(arr.slice());
+  }
+  let factorial = [1];
+  for (let i = 1; i <= arr.length; i++) {
+    factorial.push(factorial[factorial.length - 1] * i);
+  }
+  let allPerms = [];
+  for (let permNumber = 0; permNumber < factorial[factorial.length - 1]; permNumber++) {
+    let unused = arr.slice();
+    let nextPerm = [];
+    while (unused.length) {
+      let nextIndex = Math.floor((permNumber % factorial[unused.length]) / factorial[unused.length - 1]);
+      nextPerm.push(unused[nextIndex]);
+      unused.splice(nextIndex, 1);
+    }
+    yield(nextPerm);
+  }
+}
+//
 
 //
 function dictMapv(d,map_func,map_func_args) {

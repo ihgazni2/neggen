@@ -12,16 +12,18 @@ let config = {
     name:"@",
     styleInline:false,
     percent:true,
+    template:"1tl1t1tr1l1i1r1bl1b1br",
     container: {
         tag:"div",
-	itlspt:[1/3,1/3],
-	ibrspt:[2/3,2/3],
+	itop:1/3,
+	ileft:1/3,
+	iheight:1/3,
+	iwidth:1/3,
+        top:0,
+        left:0,
         height:750,
         width:375,
-        top:0,
-        left:0
     },
-    template:"1tl1t1tr1l1i1r1bl1b1br",
 
 }
 
@@ -61,15 +63,15 @@ function srchTem(n) {
 
 function getTemCfg() {
     let n = config.template
-    let itlspt = config.container.itlspt
-    let ibrspt = config.container.ibrspt
+    let itlspt = [config.container.itop,config.container.ileft]
+    let ibrspt = [config.container.itop+config.container.iheight,config.container.ileft+config.container.iwidth]
     let height = config.container.height
     let width  = config.container.width
     let top    = config.container.top
     let left   = config.container.left
     if(config.container.percent) {
-        itlspt = [itlspt[0]*height,itlspt[1]*width]
-	ibrspt = [ibrspt[0]*height,ibrspt[1]*width]
+        itlspt = [itlspt[0]*height+top,itlspt[1]*width+left]
+	ibrspt = [ibrspt[0]*height+top,ibrspt[1]*width+left]
     }
     let cfg = clscfg.getTemConfig(LAYOUT_TEMS,n,itlspt,ibrspt,height,width,top,left)
     config = cmmn.dictUpdate(config,cfg)
