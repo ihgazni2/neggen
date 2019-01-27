@@ -9,7 +9,7 @@ const cmmn = require("./tmplt/cmmn")
 
 
 let config = {
-    name:"@",
+    name:undefined,
     styleInline:false,
     percent:true,
     template:"1tl1t1tr1l1i1r1bl1b1br",
@@ -47,6 +47,12 @@ function creat() {
 
 let LAYOUT_TEMS = tem3x3.TEM3X3LAYOUTS
 
+function getAllTemNames() {
+    let keys = Object.keys(LAYOUT_TEMS)
+    let names = keys.map((k)=>(LAYOUT_TEMS[k].zn))
+    return(names)
+}
+
 function showAllTems() {
     tem3x3.lookAll()
 }
@@ -63,13 +69,14 @@ function srchTem(n) {
 
 function getTemCfg() {
     let n = config.template
+    if(config.name === undefined) {config.name = n}
     let itlspt = [config.container.itop,config.container.ileft]
     let ibrspt = [config.container.itop+config.container.iheight,config.container.ileft+config.container.iwidth]
     let height = config.container.height
     let width  = config.container.width
     let top    = config.container.top
     let left   = config.container.left
-    if(config.container.percent) {
+    if(config.percent) {
         itlspt = [itlspt[0]*height+top,itlspt[1]*width+left]
 	ibrspt = [ibrspt[0]*height+top,ibrspt[1]*width+left]
     }
@@ -81,6 +88,7 @@ function getTemCfg() {
 module.exports = {
     config:config,
     creat:creat,
+    getAllTemNames:getAllTemNames,
     showAllTems:showAllTems,
     printTem:printTem,
     srchTem:srchTem,

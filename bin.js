@@ -15,6 +15,7 @@ if(mode === "creat") {
     if("iheight" in opts) {neggen.config.container.iheight = opts.iheight}
     if("iwidth" in opts) {neggen.config.container.iwidth = opts.iwidth}
     if("tem" in opts) {neggen.template = opts.tem}
+    neggen.getTemCfg()
     neggen.creat()
 }
 

@@ -38,6 +38,18 @@ const CLSES = [
   'zebr' ]
 
 
+const ZNAMES = [
+  '@zetl@',
+  '@zetop@',
+  '@zetr@',
+  '@zel@',
+  '@zinner@',
+  '@zer@',
+  '@zebl@',
+  '@zebot@',
+  '@zebr@' ]
+
+
 function creatAttribStr(attribs) {
     if(attribs===undefined) {
         return("")
@@ -77,18 +89,17 @@ function creatEntry(tag,attribs,cls) {
 
 function creatEntries(config) {
     let arr=[]
-    for(let zn in config)  {
-	let cond = CLSES.includes(zn)
-	if(cond){
-            let cfg = config[zn]
-            arr.push(creatEntry(cfg.tag,cfg.attribs,zn))
-	}
+    for(let i=0;i<CLSES.length;i++) {
+        let cfg = config[CLSES[i]]
+        arr.push(creatEntry(cfg.tag,cfg.attribs,CLSES[i]))
     }
     let html = arr.join("") 
     html = html.trim()
     html = "        " + html
     return(html)
 }
+
+
 
 function creatHtml(config) {
     let html = ""

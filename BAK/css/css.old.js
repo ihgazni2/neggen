@@ -1,14 +1,17 @@
-const Z3X3NAMES =  [
-  "zetl",
-  "zetop",
-  "zetr",
-  "zel",
-  "zinner",
-  "zer",
-  "zebl",
-  "zebot",
-  "zebr"
-]
+const view = require("../zone/view")
+
+
+const DFLT_BGCOLOR =  {
+  zetl:"#800000",
+  zetop:"#008000",
+  zetr:"#808000",
+  zel:"#000080",
+  zinner:"#800080",
+  zer:"#008080",
+  zebl:"#C0C0C0",
+  zebot:"#808080",
+  zebr: "#FF0000"
+}
 
 
 
@@ -40,15 +43,14 @@ function creatZcss(config) {
     return(css)
 }
 
-function creatSubzCss(config,zn) {
+function creatSubzCss(pos,zn) {
     let css = CSS_TEMS.subz
-    let pos = config[zn]
     css = css.replace("@subz@",zn)
     css = css.replace("@left@",pos.left)
     css = css.replace("@top@",pos.top)
     css = css.replace("@width@",pos.width)
     css = css.replace("@height@",pos.height)
-    css = css.replace("@background@",pos.color)
+    css = css.replace("@background@",pos.background)
     return(css)
 }
 
@@ -80,16 +82,25 @@ function creatCssPlan(config) {
     } else {
         arr.push(creatZcss(config))
     }
-    for(let zn in config) {
-        let cond = (Z3X3NAMES.includes(zn))
-	if(cond){
-            if(config.styleInline){
-                styles[zn] = css2inlineStyle(creatSubzCss(config,zn))
-            } else {
-                arr.push(creatSubzCss(config,zn))
-            }
-	} else {
-	}
+    let itlspt; 
+    let ibrspt; 
+    let height = config.container.height
+    let width = config.container.width
+    let top = config.container.top
+    let left = config.container.left
+    let tmp = view.tlhw2tlbr(config.zinner.top,config.zinner.left,config.zinner.height,config.zinner.width,top,left)
+    itlspt = tmp[0]
+    ibrspt = tmp[1]
+    let vw = new view.View(itlspt,ibrspt,height,width,top,left)
+    let poses = vw.positions()
+    for(let zn in DFLT_BGCOLOR) {
+        poses[zn]["background"] = DFLT_BGCOLOR[zn]
+        pos = poses[zn]
+        if(config.styleInline){
+            styles[zn] = css2inlineStyle(creatSubzCss(pos,zn))
+        } else {
+            arr.push(creatSubzCss(pos,zn))
+        }
     }
     if(config.styleInline){
         return(styles)
