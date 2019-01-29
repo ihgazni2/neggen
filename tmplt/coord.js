@@ -16,8 +16,10 @@ function get3X3zcoords(itlspt,ibrspt,height,width,top,left) {
     let w1 = itlspt[1] - left
     let h2 = ibrspt[0] - itlspt[0]
     let w2 = ibrspt[1] - itlspt[1]
-    let h3 = height - ibrspt[0]
-    let w3 = width - ibrspt[1]
+    //let h3 = height - ibrspt[0]
+    //let w3 = width - ibrspt[1]
+    let h3 = height - (ibrspt[0] - top)
+    let w3 = width - (ibrspt[1] -left)
     let zcoords = {}
     zcoords['zetl']   = {index:0,color:zname2color("zetl"),top:top,left:left,width:w1,height:h1}
     zcoords['zetop']  = {index:1,color:zname2color("zetop"),top:top,left:left+w1,width:w2,height:h1}
