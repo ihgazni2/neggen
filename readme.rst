@@ -444,11 +444,13 @@ Restrict
 --------
 
     ::
+    
         # the below cant work in windows, coz based on ansi256
-        srchTem
-        printTem
-        showAllTem
-        allTems
+        
+        -srchTem
+        -printTem
+        -showAllTem
+        -allTems
         
         
 
