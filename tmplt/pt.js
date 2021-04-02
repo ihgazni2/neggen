@@ -62,8 +62,8 @@ function ptc(c) {
 
 //index in pt 1d
 function index(r,c,colNums) {
-    let r = this.ptr(r)
-    let c = this.ptc(c)
+    r = this.ptr(r)
+    c = this.ptc(c)
     return(r*(colNums+1)+c)
 }
 
