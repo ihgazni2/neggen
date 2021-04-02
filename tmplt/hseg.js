@@ -26,8 +26,8 @@ function hsegc(c) {
 
 //index in hseg 1d
 function index(r,c,colNums) {
-    let r = this.hsegr(r)
-    let c = this.hsegc(c)
+    r = this.hsegr(r)
+    c = this.hsegc(c)
     let offset = (colNums+colNums+1) * r
     index = offset + c
     return(index)

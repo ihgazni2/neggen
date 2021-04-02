@@ -25,8 +25,8 @@ function vsegc(c) {
 
 //index in vseg 1d
 function index(r,c,colNums) {
-    let r = this.vsegr(r)
-    let c = this.vsegc(c)
+    r = this.vsegr(r)
+    c = this.vsegc(c)
     let start = colNums
     let offset = (colNums+colNums+1) * r
     index = start + offset + c
