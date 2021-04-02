@@ -1,4 +1,4 @@
-const elel = require("elist")
+const elel = require("../elist")
 const clspt = require("./pt")
 const clshseg = require("./hseg")
 const clsvseg = require("./vseg")

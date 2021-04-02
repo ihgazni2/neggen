@@ -2,7 +2,7 @@ const fs = require("fs")
 const clsdesc = require("../desc/desc.js")
 const clscmmn = require("./cmmn")
 const process = require("process")
-const elel = require("elist")
+const elel = require("../elist")
 const path = require("path")
 
 function getTemJsonDir() {

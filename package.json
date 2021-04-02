@@ -1,6 +1,6 @@
 {
   "name": "neggen",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "generate html grid",
   "main": "neggen.js",
   "scripts": {
@@ -20,8 +20,7 @@
     "url": "https://github.com/ihgazni2/neggen/issues"
   },
   "dependencies": {
-    "yargs": ">=12.0.5",
-    "elist": ">=1.2.2"
+    "yargs": ">=12.0.5"
   },
   "homepage": "https://github.com/ihgazni2/neggen#readme",
   "repository" : {
